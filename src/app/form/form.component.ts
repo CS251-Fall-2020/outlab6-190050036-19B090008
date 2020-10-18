@@ -13,7 +13,6 @@ import { FormService } from '../form.service';
 export class FormComponent implements OnInit {
   data: Form;
   msg: any;
-  flag;
   constructor(private formService: FormService) { }
   empForm = new FormGroup({
     name: new FormControl(''),
@@ -23,7 +22,7 @@ export class FormComponent implements OnInit {
   });
 
   onSubmit(){
-    this.formService.postConfig(this.empForm.value).subscribe(res => {console.log(res);this.msg='Form Successfully Submitted';this.flag=true}, error => {console.log(error);this.msg=JSON.stringify(error.error);this.flag=false});
+    this.formService.postConfig(this.empForm.value).subscribe(res => {console.log(res);this.msg='Form Successfully Submitted'}, error => {console.log(error);this.msg=JSON.stringify(error.error)});
   }
   ngOnInit() {
     this.getdata();
